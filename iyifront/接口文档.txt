@@ -1,0 +1,68 @@
+﻿bus.$emit("showbox") //这个指令可以打开登录窗口:需要先引入bus
+
+
+
+1：/userLogin
+desc：用户登录接口
+type:post
+data:username,password
+return:
+    1、账户不存在时
+      {
+        code:0,
+        msg:"账户不存在"
+      }
+    2、密码错误时
+      {
+        code:1,
+        msg:"密码错误"
+      }
+    3、登录成功之后把用户的id和username返回
+      {
+        code:2,
+        msg:"登录成功",
+        user:{
+          id,
+          username
+        }
+      }
+
+
+2、/getDetail
+desc:根据商品id得到goods表中的所有字段信息
+type:get
+params:gid
+return:[{id:1,name:....}]
+
+
+3、/checkusername  
+desc:用户注册的时候检测是否存在此用户名
+type：post
+data: username
+return: []
+
+
+4、/checkphonenum
+desc:用户注册的时候验证是否存在此手机号
+type:post
+data:phone
+return:[]
+
+5、/userRegist
+desc:用户注册
+type:post
+data:{
+  username,
+  password,
+  phone
+}
+return: 0||1
+
+
+6、/getCartData 
+desc : get
+type : get
+params: uid
+return:[{id,name,price,cover,rest,count}]
+//备注：id为商品id
+
